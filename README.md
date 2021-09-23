@@ -69,6 +69,8 @@ expect(wrapper.findAll('[data-test="todo"]')).toHaveLength(2);
 
 trigger 메서드를 사용하여. submit 동작을 실행할 수 있으며, 실행 된 값을 확인 할 수 있다.
 
+# Triggering Events
+
 ```
 // check 박스 체크
 await wrapper.get('[data-test="todo-ckeckbox"]').setChecked(true);
@@ -78,23 +80,16 @@ expect(wrapper.get('[data-test="todo"]').classes()).toContain("completed");
 
 setChecked() 를 이용하여, 체크박스 값을 토글 할 수 있으며, classes() 를 이용하여, 클래스 유무를 확인 할 수 있다.
 
-# Triggering Events
-
-```
-
-```
-
-# More Complex Assertions
-
-```
-
-```
-
 # Running Code Before Each Test
 
 ```
-
+let wrapper;
+beforeEach(() => {
+  wrapper = mount(TodoApp);
+});
 ```
+
+beforeEach afterEach 는 매 테스트마다 실행되며, beforeAll, afterAll 은 블록 실행 전, 후 1번만 실행된다.
 
 # Finding Elements - Nav.vue
 
