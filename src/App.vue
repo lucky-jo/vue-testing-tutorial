@@ -1,12 +1,24 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+  <div>
+    <TodoApp />
+    <Nav />
+    <Parent />
   </div>
 </template>
+
+<script>
+import TodoApp from "./components/TodoApp.vue";
+import Nav from "./components/Nav.vue";
+import Parent from "./components/Parent.vue";
+export default {
+  name: "App",
+  components: {
+    TodoApp,
+    Nav,
+    Parent,
+  },
+};
+</script>
 
 <style>
 #app {
