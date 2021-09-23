@@ -94,8 +94,19 @@ beforeEach afterEach 는 매 테스트마다 실행되며, beforeAll, afterAll �
 # Finding Elements - Nav.vue
 
 ```
+const profileLink = wrapper.get("#profile");
+const profileLink = wrapper.find("#profile");
 
 ```
+
+get - https://vue-test-utils.vuejs.org/api/wrapper/get.html
+find - https://vue-test-utils.vuejs.org/api/wrapper/find.html
+getComponent - https://vue-test-utils.vuejs.org/api/wrapper/getComponent.html
+findComponent - https://vue-test-utils.vuejs.org/api/wrapper/find.html
+테스트를 학습하며, get 과 find 를 사용하여 element 에 접근 할 수 있어, 둘의 차이를 알아보기 위해, Vue Jest 공식문서를 확인하면서 get 과 find는 앞으로 사라질 예정 이라고 한다. 대신 getComponent 와 findComponent 를 사용하라는 안내가 있다.
+
+getComponent 는 findComponent처럼 작동하지만 주어진 선택기와 일치하는 것이 없으면 오류가 발생합니다. 존재하지 않을 수 있는 요소를 검색할 때 findComponent를 사용해야 합니다. 존재해야 하는 요소를 가져올 때 이 방법을 사용해야 하며 그렇지 않은 경우 좋은 오류 메시지를 제공합니다.
+테스트 시 findComponent 를 사용하는 것이 편리해보인다.
 
 # Shallow Rendering -
 
