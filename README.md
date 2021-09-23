@@ -47,8 +47,36 @@ props 를 전달받아 표현하는 컴포넌트의 경우, propsData 속성으�
 # Finding Elements
 
 ```
+// 컴포넌트에 data-test="todo" 값을 주어 find 또는 fildAll 을 사용하여 찾을 수 있다.
+const todo = wrapper.findAll('[data-test="todo"]');
+// 찾은 elements 의 갯수 확인
+expect(todo).toHaveLength(1);
+```
+
+컴포넌트에 data-test="todo" 값을 주어 find 또는 fildAll 을 사용하여 찾을 수 있다.
 
 ```
+wrapper.get('[data-test="new-todo"]').setValue("New Todo")
+```
+
+setValue 메서드를 사용하여 값을 초기화 할 수 있다.
+
+```
+// trigger 메서드를 사용하여. submit 동작을 실행할 수 있다.
+await wrapper.get('[data-test="form"]').trigger("submit");
+expect(wrapper.findAll('[data-test="todo"]')).toHaveLength(2);
+```
+
+trigger 메서드를 사용하여. submit 동작을 실행할 수 있으며, 실행 된 값을 확인 할 수 있다.
+
+```
+// check 박스 체크
+await wrapper.get('[data-test="todo-ckeckbox"]').setChecked(true);
+// classes() 이용해, 클래스 존재 유무 확인
+expect(wrapper.get('[data-test="todo"]').classes()).toContain("completed");
+```
+
+setChecked() 를 이용하여, 체크박스 값을 토글 할 수 있으며, classes() 를 이용하여, 클래스 유무를 확인 할 수 있다.
 
 # Triggering Events
 
