@@ -108,11 +108,22 @@ findComponent - https://vue-test-utils.vuejs.org/api/wrapper/find.html
 getComponent 는 findComponent처럼 작동하지만 주어진 선택기와 일치하는 것이 없으면 오류가 발생합니다. 존재하지 않을 수 있는 요소를 검색할 때 findComponent를 사용해야 합니다. 존재해야 하는 요소를 가져올 때 이 방법을 사용해야 하며 그렇지 않은 경우 좋은 오류 메시지를 제공합니다.
 테스트 시 findComponent 를 사용하는 것이 편리해보인다.
 
-# Shallow Rendering -
+# Shallow Rendering - Parrent.vue
 
 ```
+const wrapper = shallowMount(Parent);
 
+expect(wrapper.text()).toContain("Parent");
+expect(wrapper.text()).toContain("Child");
 ```
+
+테스트를 해보며, mound 와 shallowMount 의 차이는, 자식 요소의 유무로 파악되었다. 만약에, mound 를 사용하여 렌더 후, 테스트 할 경우, Child 컴포넌트의 Child 는 통과 하지만, shallowMount 쓸 경우, Child 를 통과하지 못 한다. 그 이유는 Parent 컴포넌트만 렌더링 되었기 때문으로 추측된다. 해당 테스트는 Parent 컴포넌트의 테스트 이므로, shallowMount 를 써야지 정확한 테스트를 진행할 수 있다.
+
+# 회고
+
+해당 테스트는 https://www.youtube.com/watch?v=QIDhzBg5eWY&list=RDCMUCyLNhHSiEVkVwPSFKxJAfSA&start_radio=1&rv=QIDhzBg5eWY&t=4741 를 참고하여 학습하였습니다.
+테스트를 진행하며, 테스트 설치 방법, 테스트 구조와 방식, 엘리먼트 찾는 방법, 자식에게 Props 데이터 전달, 이벤트 트리거 방법 등을 학습하였습니다.
+인상 깊었던 점은, 테스트 진행 중, 엘리먼트에 접근 하는 방식이, get 과 find 가 있어, 둘의 차이를 학습하기 위해, 공식문서를 방문하여 둘의 차이를 학습하고, 앞으로 해당 메서드는 앞으로 사라질 예정이며, getComponent 과 findComponent 를 권장 한다는 소식이었습니다. 또한 mound 와 shallowMount 의 차이를 학습하여, 목적에 맞는 정확한 테스트를 진행 할 수 있었습니다.
 
 # testing-tutorial
 
@@ -125,10 +136,6 @@ getComponent 는 findComponent처럼 작동하지만 주어진 선택기와 일�
 ```
 
 ```
-
-# 회고
-
-toContain 의 비교 방식 정확히 일치 하는지 보다 정규식 방식으로 작동하는 것 같다.
 
 ```
 npm install
