@@ -161,7 +161,22 @@ expect(wrapper.text()).toContain("Child");
 
 ```
 
-npm install
+# async await
+
+```
+  it("should add new todo ", async () => {
+    const todo = wrapper.findAll('[data-test="todo"]');
+    expect(todo).toHaveLength(1);
+    // mount 후 수정 및 event trigger
+    await wrapper.get('[data-test="new-todo"]').setValue("New Todo");
+    await wrapper.get('[data-test="form"]').trigger("submit");
+    expect(wrapper.findAll('[data-test="todo"]')).toHaveLength(2);
+  });
+```
+
+element 의 수정 혹은 이벤트 트리거는 비동기로 작동하기 떄문에, async awiat 구분을 사용해야 한다.
+
+### npm install
 
 ```
 
