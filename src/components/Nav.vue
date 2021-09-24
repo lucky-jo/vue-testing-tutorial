@@ -1,7 +1,7 @@
 <template>
   <nav>
     <a>Home</a>
-    <a v-if="isLoggedIn" id="profile">My Profile</a>
+    <a v-if="isLoggedIn" ref="profile">My Profile</a>
   </nav>
 </template>
 

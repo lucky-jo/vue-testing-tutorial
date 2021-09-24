@@ -11,7 +11,7 @@ describe("Nav.vue", () => {
       },
     });
 
-    const profileLink = wrapper.getComponent("#profile");
+    const profileLink = wrapper.getComponent({ ref: "profile" });
 
     expect(profileLink.text()).toEqual("My Profile");
   });
