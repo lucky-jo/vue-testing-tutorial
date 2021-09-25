@@ -21,8 +21,7 @@ Vuetify.js Component Test && Nuxt.js Test
 
 # Setup
 
-````
-
+```
 vue add unit-jest
 
 ```
@@ -32,7 +31,6 @@ vue cli 로 설치시 자동으로 설치 되어 있거나, 수동으로 추가�
 # Test Structure
 
 ```
-
 import { shallowMount } from "@vue/test-utils";
 import HelloWorld from "@/components/HelloWorld.vue";
 
@@ -58,7 +56,6 @@ it 내부에 테스트 할 컴포넌트를 마운트 시킨 후, expect 메서�
 # Props
 
 ```
-
 const wrapper = mount(Message, {
 // props 전달
 propsData: {
@@ -74,7 +71,6 @@ props 를 전달받아 표현하는 컴포넌트의 경우, propsData 속성으�
 # Finding Elements
 
 ```
-
 // 컴포넌트에 data-test="todo" 값을 주어 find 또는 fildAll 을 사용하여 찾을 수 있다.
 const todo = wrapper.findAll('[data-test="todo"]');
 // 찾은 elements 의 갯수 확인
@@ -85,7 +81,6 @@ expect(todo).toHaveLength(1);
 컴포넌트에 data-test="todo" 값을 주어 find 또는 fildAll 을 사용하여 찾을 수 있다.
 
 ```
-
 wrapper.get('[data-test="new-todo"]').setValue("New Todo")
 
 ```
@@ -93,7 +88,6 @@ wrapper.get('[data-test="new-todo"]').setValue("New Todo")
 setValue 메서드를 사용하여 값을 초기화 할 수 있다.
 
 ```
-
 // trigger 메서드를 사용하여. submit 동작을 실행할 수 있다.
 await wrapper.get('[data-test="form"]').trigger("submit");
 expect(wrapper.findAll('[data-test="todo"]')).toHaveLength(2);
@@ -105,7 +99,6 @@ trigger 메서드를 사용하여. submit 동작을 실행할 수 있으며, 실
 # Triggering Events
 
 ```
-
 // check 박스 체크
 await wrapper.get('[data-test="todo-ckeckbox"]').setChecked(true);
 // classes() 이용해, 클래스 존재 유무 확인
@@ -118,7 +111,6 @@ setChecked() 를 이용하여, 체크박스 값을 토글 할 수 있으며, cla
 # Running Code Before Each Test
 
 ```
-
 let wrapper;
 beforeEach(() => {
 wrapper = mount(TodoApp);
@@ -131,13 +123,13 @@ beforeEach afterEach 는 매 테스트마다 실행되며, beforeAll, afterAll �
 # Finding Elements - Nav.vue
 
 ```
-
 const profileLink = wrapper.get("#profile");
 const profileLink = wrapper.find("#profile");
 
-````
+```
 
-````get - https://vue-test-utils.vuejs.org/api/wrapper/get.html
+````
+get - https://vue-test-utils.vuejs.org/api/wrapper/get.html
 find - https://vue-test-utils.vuejs.org/api/wrapper/find.html
 getComponent - https://vue-test-utils.vuejs.org/api/wrapper/getComponent.html
 findComponent - https://vue-test-utils.vuejs.org/api/wrapper/find.html```
